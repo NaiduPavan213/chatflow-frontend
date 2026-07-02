@@ -35,7 +35,7 @@ export default function ChatRoom() {
     };
 
     const connectWebSocket = () => {
-        const socket = new SockJS('http://localhost:8080/ws');
+        const socket = new SockJS('https://chatflow-backend-xubw.onrender.com/ws');
         const stompClient = Stomp.over(socket);
 
         stompClient.connect({}, () => {
