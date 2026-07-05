@@ -35,7 +35,10 @@ export default function ChatRoom() {
     };
 
     const connectWebSocket = () => {
-        const socket = new SockJS('https://chatflow-backend-xubw.onrender.com/ws');
+        const backendUrl = import.meta.env.VITE_API_URL 
+            ? import.meta.env.VITE_API_URL.replace('/api', '') 
+            : 'http://localhost:8080';
+        const socket = new SockJS(`${backendUrl}/ws`);
         const stompClient = Stomp.over(socket);
 
         stompClient.connect({}, () => {
